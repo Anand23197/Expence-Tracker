@@ -1,11 +1,12 @@
-import Welcome from "./Welcome";
 import React from "react";
+import Welcome from './Welcome';
 
-const App =()=>{
-    let name = "anand";
-    return (
-      <Welcome name={name}/>
-    );
+const App = () => {
+  let name = "Anand";
+  return (
+    <Welcome name={name} />
+  )
 }
+
 
 export default App;
