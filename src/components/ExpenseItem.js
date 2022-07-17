@@ -1,18 +1,26 @@
-import './ExpenseItem.css';
+import React, {useContext} from 'react'
+import {TiDeleteOutline} from 'react-icons/ti'
+import { AppContext } from '../context/AppContext'
 
-function ExpenceItem(){
-    let title = "car insurence";
-   return (
-       <div className="expense-item">
-            <div >
-                <div>March 12th 2021</div>
-            </div>
-            <div className="expense-item__descreption"> 
-                <h2> {title}</h2>
-                <div className="expense-item__price">$200</div>
-            </div>
-       </div>
-   );
+
+const ExpenseItem = (props) => {
+  const {dispatch} = useContext(AppContext);
+   const itemDelete = ()=>{
+         const id = props.id;
+        dispatch({type: "DEL_EXPENCE", payload : id}); 
+   }
+  return (
+    <li className='list-group-item d-flex justify-content-between align-items-center'>
+        {props.name}
+        <div>
+            <span>
+            Rs.{props.cost}
+            </span>
+         <TiDeleteOutline size='2em' onClick={itemDelete}></TiDeleteOutline>
+        </div>
+        
+    </li>
+  )
 }
 
-export default ExpenceItem;
+export default ExpenseItem
